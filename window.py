@@ -7,7 +7,6 @@ class Window(QMainWindow):
     class FileDialogMode(Enum):
         OUTPUT_DIR  = 1
         COOKIES_TXT = 2
-        OUTPUT_FILE = 3
 
     def __init__(self):
         super(Window, self).__init__()
@@ -16,16 +15,17 @@ class Window(QMainWindow):
 
         self.ui.choose_out_dir_btn.clicked.connect(self.choose_output_dir)
         self.ui.choose_cookies_btn.clicked.connect(self.choose_cookies_file)
-        self.ui.set_output_file_btn.clicked.connect(self.choose_output_file)
 
         self.ui.output_dir_line.textChanged.connect(self.check_start)
         self.ui.cookies_file_line.textChanged.connect(self.check_start)
         self.ui.output_file_name_line.textChanged.connect(self.check_start)
 
+        self.ui.start_stop_btn.clicked.connect(self.start_ciuling)
+
     def check_start(self):
-        out_dir_txt  = re.sub(r"\s+", "", self.ui.output_dir_line.text())
-        cookies_txt  = re.sub(r"\s+", "", self.ui.cookies_file_line.text())
-        out_file_txt = re.sub(r"\s+", "", self.ui.output_file_name_line.text())
+        out_dir_txt  = self.ui.output_dir_line.text().strip()
+        cookies_txt  = self.ui.cookies_file_line.text().strip()
+        out_file_txt = self.ui.output_file_name_line.text().strip()
 
         self.ui.start_stop_btn.setEnabled((out_dir_txt != "" and cookies_txt != "" and out_file_txt != ""))
 
@@ -46,16 +46,19 @@ class Window(QMainWindow):
             if (mode == self.FileDialogMode.OUTPUT_DIR):
                 dialog.setFileMode(QFileDialog.Directory)
                 dialog.setOption(QFileDialog.ShowDirsOnly, True)
-            else:
+            elif (mode == self.FileDialogMode.COOKIES_TXT):
                 dialog.setOption(QFileDialog.ReadOnly, True)
-                
-                if (mode == self.FileDialogMode.COOKIES_TXT):
-                    dialog.setFileMode(QFileDialog.ExistingFile)
-                    dialog.setNameFilter("Text files (*.txt)")
-                elif (mode == self.FileDialogMode.OUTPUT_FILE):
-                    dialog.setFileMode(QFileDialog.AcceptSave)
-                    dialog.setFileMode(QFileDialog.AnyFile)
-                    dialog.setNameFilter("Videos (*.mp4 *.mkv *.avi)")
+                dialog.setFileMode(QFileDialog.ExistingFile)
+                dialog.setNameFilter("Text files (*.txt)")
 
             if dialog.exec_():
                 text_line.setText(dialog.selectedFiles()[0])
+
+    def start_ciuling(self):
+        out_dir  = self.ui.output_dir_line.text().strip()
+        cookies  = self.ui.cookies_file_line.text().strip()
+        out_file = self.ui.output_file_name_line.text().strip()
+
+        print(f"Output directory: {out_dir}")
+        print(f"Cookies txt file: {cookies}")
+        print(f"Output file name: {out_file}")

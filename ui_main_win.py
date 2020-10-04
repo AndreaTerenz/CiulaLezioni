@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(515, 506)
+        MainWindow.resize(515, 496)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -83,15 +83,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.output_file_name_line)
 
-        self.set_output_file_btn = QPushButton(self.centralwidget)
-        self.set_output_file_btn.setObjectName(u"set_output_file_btn")
-        sizePolicy.setHeightForWidth(self.set_output_file_btn.sizePolicy().hasHeightForWidth())
-        self.set_output_file_btn.setSizePolicy(sizePolicy)
-        self.set_output_file_btn.setMinimumSize(QSize(100, 25))
-        self.set_output_file_btn.setMaximumSize(QSize(50, 16777215))
-
-        self.horizontalLayout_3.addWidget(self.set_output_file_btn)
-
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
@@ -132,7 +123,6 @@ class Ui_MainWindow(object):
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.output_file_name_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file name", None))
-        self.set_output_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.start_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
