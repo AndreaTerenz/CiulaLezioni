@@ -83,14 +83,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.output_file_name_line)
 
-        self.select_output_file_btn = QPushButton(self.centralwidget)
-        self.select_output_file_btn.setObjectName(u"select_output_file_btn")
-        sizePolicy.setHeightForWidth(self.select_output_file_btn.sizePolicy().hasHeightForWidth())
-        self.select_output_file_btn.setSizePolicy(sizePolicy)
-        self.select_output_file_btn.setMinimumSize(QSize(100, 25))
-        self.select_output_file_btn.setMaximumSize(QSize(50, 16777215))
+        self.set_output_file_btn = QPushButton(self.centralwidget)
+        self.set_output_file_btn.setObjectName(u"set_output_file_btn")
+        sizePolicy.setHeightForWidth(self.set_output_file_btn.sizePolicy().hasHeightForWidth())
+        self.set_output_file_btn.setSizePolicy(sizePolicy)
+        self.set_output_file_btn.setMinimumSize(QSize(100, 25))
+        self.set_output_file_btn.setMaximumSize(QSize(50, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.select_output_file_btn)
+        self.horizontalLayout_3.addWidget(self.set_output_file_btn)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
@@ -105,7 +105,6 @@ class Ui_MainWindow(object):
         self.output_log = QTextBrowser(self.centralwidget)
         self.output_log.setObjectName(u"output_log")
         self.output_log.setMinimumSize(QSize(0, 250))
-        self.output_log.setMaximumSize(QSize(16777215, 700))
 
         self.verticalLayout.addWidget(self.output_log)
 
@@ -133,7 +132,7 @@ class Ui_MainWindow(object):
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.output_file_name_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file name", None))
-        self.select_output_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
+        self.set_output_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.start_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
