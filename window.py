@@ -1,6 +1,7 @@
 from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QLineEdit
 from ui_main_win import Ui_MainWindow
 from enum import Enum
+import re
 
 class Window(QMainWindow):
     class FileDialogMode(Enum):
@@ -12,9 +13,21 @@ class Window(QMainWindow):
         super(Window, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
         self.ui.choose_out_dir_btn.clicked.connect(self.choose_output_dir)
         self.ui.choose_cookies_btn.clicked.connect(self.choose_cookies_file)
         self.ui.set_output_file_btn.clicked.connect(self.choose_output_file)
+
+        self.ui.output_dir_line.textChanged.connect(self.check_start)
+        self.ui.cookies_file_line.textChanged.connect(self.check_start)
+        self.ui.output_file_name_line.textChanged.connect(self.check_start)
+
+    def check_start(self):
+        out_dir_txt  = re.sub(r"\s+", "", self.ui.output_dir_line.text())
+        cookies_txt  = re.sub(r"\s+", "", self.ui.cookies_file_line.text())
+        out_file_txt = re.sub(r"\s+", "", self.ui.output_file_name_line.text())
+
+        self.ui.start_stop_btn.setEnabled((out_dir_txt != "" and cookies_txt != "" and out_file_txt != ""))
 
     def choose_output_dir(self):
         self.choose_file(self.FileDialogMode.OUTPUT_DIR, self.ui.output_dir_line)
@@ -40,6 +53,7 @@ class Window(QMainWindow):
                     dialog.setFileMode(QFileDialog.ExistingFile)
                     dialog.setNameFilter("Text files (*.txt)")
                 elif (mode == self.FileDialogMode.OUTPUT_FILE):
+                    dialog.setFileMode(QFileDialog.AcceptSave)
                     dialog.setFileMode(QFileDialog.AnyFile)
                     dialog.setNameFilter("Videos (*.mp4 *.mkv *.avi)")
 
