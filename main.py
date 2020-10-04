@@ -21,7 +21,6 @@ class Window(QMainWindow):
         dialog.setAcceptMode(QFileDialog.AcceptOpen)
 
         if dialog.exec_():
-            print(dialog.selectedFiles())
             self.ui.output_dir_line.setText(dialog.selectedFiles()[0])
 
     def choose_cookies_file(self):
@@ -32,7 +31,6 @@ class Window(QMainWindow):
         dialog.setNameFilter("Text files (*.txt)")
 
         if dialog.exec_():
-            print(dialog.selectedFiles())
             self.ui.cookies_file_line.setText(dialog.selectedFiles()[0])
 
 if __name__ == '__main__':
