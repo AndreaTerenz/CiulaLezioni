@@ -11,7 +11,7 @@ class Window(QMainWindow):
         super(Window, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.pushButton.clicked.connect(self.gigi)
+        self.ui.choose_out_dir_btn.clicked.connect(self.gigi)
     
     def gigi(self):
         self.ui.textBrowser.setText(self.ui.textBrowser.toPlainText() + "\nGIIIIGI")

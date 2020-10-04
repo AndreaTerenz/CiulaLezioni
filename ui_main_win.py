@@ -35,10 +35,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.lineEdit)
 
-        self.pushButton = QPushButton(self.verticalLayoutWidget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.choose_out_dir_btn = QPushButton(self.verticalLayoutWidget)
+        self.choose_out_dir_btn.setObjectName(u"choose_out_dir_btn")
+        self.choose_out_dir_btn.setMinimumSize(QSize(105, 0))
+        self.choose_out_dir_btn.setMaximumSize(QSize(105, 16777215))
 
-        self.horizontalLayout_4.addWidget(self.pushButton)
+        self.horizontalLayout_4.addWidget(self.choose_out_dir_btn)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_4)
@@ -52,10 +54,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addWidget(self.cookies_file_line)
 
-        self.pushButton_2 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.choose_cookies_btn = QPushButton(self.verticalLayoutWidget)
+        self.choose_cookies_btn.setObjectName(u"choose_cookies_btn")
+        self.choose_cookies_btn.setMinimumSize(QSize(105, 0))
+        self.choose_cookies_btn.setMaximumSize(QSize(105, 16777215))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_2)
+        self.horizontalLayout_5.addWidget(self.choose_cookies_btn)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_5)
@@ -69,15 +73,24 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.output_file_name_line)
 
-        self.pushButton_3 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.go_btn = QPushButton(self.verticalLayoutWidget)
+        self.go_btn.setObjectName(u"go_btn")
+        sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.go_btn.sizePolicy().hasHeightForWidth())
+        self.go_btn.setSizePolicy(sizePolicy)
+        self.go_btn.setMaximumSize(QSize(50, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.pushButton_3)
+        self.horizontalLayout_3.addWidget(self.go_btn)
 
-        self.pushButton_4 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.stop_btn = QPushButton(self.verticalLayoutWidget)
+        self.stop_btn.setObjectName(u"stop_btn")
+        sizePolicy.setHeightForWidth(self.stop_btn.sizePolicy().hasHeightForWidth())
+        self.stop_btn.setSizePolicy(sizePolicy)
+        self.stop_btn.setMaximumSize(QSize(50, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.pushButton_4)
+        self.horizontalLayout_3.addWidget(self.stop_btn)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
@@ -112,10 +125,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"CiulaLezioni", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"GIGI", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Search", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Go", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
+        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output folder", None))
+        self.choose_out_dir_btn.setText(QCoreApplication.translate("MainWindow", u"Search", None))
+        self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
+        self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Search", None))
+        self.output_file_name_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file name", None))
+        self.go_btn.setText(QCoreApplication.translate("MainWindow", u"Go", None))
+        self.stop_btn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
