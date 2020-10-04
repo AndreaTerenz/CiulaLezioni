@@ -30,10 +30,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.horizontalLayout_4.setContentsMargins(20, -1, 20, -1)
-        self.lineEdit = QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.output_dir_line = QLineEdit(self.verticalLayoutWidget)
+        self.output_dir_line.setObjectName(u"output_dir_line")
 
-        self.horizontalLayout_4.addWidget(self.lineEdit)
+        self.horizontalLayout_4.addWidget(self.output_dir_line)
 
         self.choose_out_dir_btn = QPushButton(self.verticalLayoutWidget)
         self.choose_out_dir_btn.setObjectName(u"choose_out_dir_btn")
@@ -125,7 +125,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"CiulaLezioni", None))
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output folder", None))
+        self.output_dir_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output folder", None))
         self.choose_out_dir_btn.setText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Search", None))
