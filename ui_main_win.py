@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(553, 459)
+        MainWindow.resize(515, 506)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.choose_out_dir_btn.sizePolicy().hasHeightForWidth())
         self.choose_out_dir_btn.setSizePolicy(sizePolicy)
-        self.choose_out_dir_btn.setMinimumSize(QSize(100, 0))
+        self.choose_out_dir_btn.setMinimumSize(QSize(100, 25))
         self.choose_out_dir_btn.setMaximumSize(QSize(104, 16777215))
 
         self.horizontalLayout_4.addWidget(self.choose_out_dir_btn)
@@ -65,7 +65,7 @@ class Ui_MainWindow(object):
         self.choose_cookies_btn.setObjectName(u"choose_cookies_btn")
         sizePolicy.setHeightForWidth(self.choose_cookies_btn.sizePolicy().hasHeightForWidth())
         self.choose_cookies_btn.setSizePolicy(sizePolicy)
-        self.choose_cookies_btn.setMinimumSize(QSize(100, 0))
+        self.choose_cookies_btn.setMinimumSize(QSize(100, 25))
         self.choose_cookies_btn.setMaximumSize(QSize(104, 16777215))
 
         self.horizontalLayout_5.addWidget(self.choose_cookies_btn)
@@ -83,21 +83,29 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.output_file_name_line)
 
-        self.go_stop_btn = QPushButton(self.centralwidget)
-        self.go_stop_btn.setObjectName(u"go_stop_btn")
-        sizePolicy.setHeightForWidth(self.go_stop_btn.sizePolicy().hasHeightForWidth())
-        self.go_stop_btn.setSizePolicy(sizePolicy)
-        self.go_stop_btn.setMinimumSize(QSize(100, 0))
-        self.go_stop_btn.setMaximumSize(QSize(50, 16777215))
+        self.select_output_file_btn = QPushButton(self.centralwidget)
+        self.select_output_file_btn.setObjectName(u"select_output_file_btn")
+        sizePolicy.setHeightForWidth(self.select_output_file_btn.sizePolicy().hasHeightForWidth())
+        self.select_output_file_btn.setSizePolicy(sizePolicy)
+        self.select_output_file_btn.setMinimumSize(QSize(100, 25))
+        self.select_output_file_btn.setMaximumSize(QSize(50, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.go_stop_btn)
+        self.horizontalLayout_3.addWidget(self.select_output_file_btn)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
+        self.start_stop_btn = QPushButton(self.centralwidget)
+        self.start_stop_btn.setObjectName(u"start_stop_btn")
+        self.start_stop_btn.setEnabled(False)
+        self.start_stop_btn.setMinimumSize(QSize(0, 25))
+
+        self.verticalLayout.addWidget(self.start_stop_btn)
+
         self.output_log = QTextBrowser(self.centralwidget)
         self.output_log.setObjectName(u"output_log")
         self.output_log.setMinimumSize(QSize(0, 250))
+        self.output_log.setMaximumSize(QSize(16777215, 700))
 
         self.verticalLayout.addWidget(self.output_log)
 
@@ -107,7 +115,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 553, 28))
+        self.menubar.setGeometry(QRect(0, 0, 515, 28))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -121,11 +129,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"CiulaLezioni", None))
         self.output_dir_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output folder", None))
-        self.choose_out_dir_btn.setText(QCoreApplication.translate("MainWindow", u"Search", None))
+        self.choose_out_dir_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
-        self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Search", None))
+        self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.output_file_name_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file name", None))
-        self.go_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Go", None))
+        self.select_output_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
+        self.start_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

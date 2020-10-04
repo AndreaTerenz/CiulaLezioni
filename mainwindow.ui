@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>553</width>
-    <height>459</height>
+    <width>515</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,7 @@
           <property name="minimumSize">
            <size>
             <width>100</width>
-            <height>0</height>
+            <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -71,7 +71,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Search</string>
+           <string>Browse</string>
           </property>
          </widget>
         </item>
@@ -112,7 +112,7 @@
           <property name="minimumSize">
            <size>
             <width>100</width>
-            <height>0</height>
+            <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -122,7 +122,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Search</string>
+           <string>Browse</string>
           </property>
          </widget>
         </item>
@@ -153,7 +153,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="go_stop_btn">
+         <widget class="QPushButton" name="select_output_file_btn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -163,7 +163,7 @@
           <property name="minimumSize">
            <size>
             <width>100</width>
-            <height>0</height>
+            <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -173,11 +173,27 @@
            </size>
           </property>
           <property name="text">
-           <string>Go</string>
+           <string>Select</string>
           </property>
          </widget>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="start_stop_btn">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QTextBrowser" name="output_log">
@@ -205,7 +221,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>553</width>
+     <width>515</width>
      <height>28</height>
     </rect>
    </property>
