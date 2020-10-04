@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setSpacing(12)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(20, -1, 20, -1)
+        self.verticalLayout.setContentsMargins(0, -1, 0, -1)
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setSizeConstraint(QLayout.SetDefaultConstraint)
