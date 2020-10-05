@@ -6,7 +6,7 @@
         {
             "label": "compile_ui",
             "type": "shell",
-            "command": "pyside2-uic mainwindow.ui > ui_main_win.py"
+            "command": "pyside2-uic mainwindow.ui > ui_main_win.py; pyside2-uic output_file_ext_dialog.ui > out_file_dialog.py"
         }
     ]
 }

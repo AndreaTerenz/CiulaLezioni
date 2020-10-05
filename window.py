@@ -1,7 +1,11 @@
-from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog, QLineEdit
-from ui_main_win import Ui_MainWindow
+from PySide2.QtWidgets import (QApplication, QMainWindow, QWidget,
+                               QFileDialog, QLineEdit)
+
 from enum import Enum
 import re
+
+from ui_main_win import Ui_MainWindow
+from dialog import OutputFileNameDialog
 
 class Window(QMainWindow):
     class FileDialogMode(Enum):
@@ -40,6 +44,8 @@ class Window(QMainWindow):
 
         self.has_started = False
         
+        x = self.OutputFileNameDialog()
+        x.exec_()
 
     def check_start(self):
         all_filled_in = True
@@ -87,6 +93,8 @@ class Window(QMainWindow):
             l.setText("")
 
     def start_ciuling(self):
+         
+         
         self.has_started = True
 
         for x in self.to_disable_when_start:
