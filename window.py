@@ -13,6 +13,21 @@ class Window(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.to_disable_when_start = [
+            self.ui.choose_cookies_btn,
+            self.ui.choose_out_dir_btn,
+            self.ui.cookies_file_line,
+            self.ui.output_dir_line,
+            self.ui.output_file_name_line,
+            self.ui.start_btn
+        ]
+
+        self.text_lines = {
+            "output_dir" : self.ui.output_dir_line,
+            "cookies_file" : self.ui.cookies_file_line,
+            "output_file" : self.ui.output_file_name_line
+        }
+
         self.ui.choose_out_dir_btn.clicked.connect(self.choose_output_dir)
         self.ui.choose_cookies_btn.clicked.connect(self.choose_cookies_file)
 
@@ -20,14 +35,19 @@ class Window(QMainWindow):
         self.ui.cookies_file_line.textChanged.connect(self.check_start)
         self.ui.output_file_name_line.textChanged.connect(self.check_start)
 
-        self.ui.start_stop_btn.clicked.connect(self.start_ciuling)
+        self.ui.start_btn.clicked.connect(self.start_ciuling)
+        self.ui.stop_btn.clicked.connect(self.stop_ciuling)
+
+        self.has_started = False
+        
 
     def check_start(self):
-        out_dir_txt  = self.ui.output_dir_line.text().strip()
-        cookies_txt  = self.ui.cookies_file_line.text().strip()
-        out_file_txt = self.ui.output_file_name_line.text().strip()
+        all_filled_in = True
+        for k, l in self.text_lines.items():
+            t = l.text().strip()
+            all_filled_in = all_filled_in and (t != "")
 
-        self.ui.start_stop_btn.setEnabled((out_dir_txt != "" and cookies_txt != "" and out_file_txt != ""))
+        self.ui.start_btn.setEnabled(all_filled_in)
 
     def choose_output_dir(self):
         self.choose_file(self.FileDialogMode.OUTPUT_DIR, self.ui.output_dir_line)
@@ -54,11 +74,32 @@ class Window(QMainWindow):
             if dialog.exec_():
                 text_line.setText(dialog.selectedFiles()[0])
 
-    def start_ciuling(self):
-        out_dir  = self.ui.output_dir_line.text().strip()
-        cookies  = self.ui.cookies_file_line.text().strip()
-        out_file = self.ui.output_file_name_line.text().strip()
+    def add_to_log(self, str):
+        self.ui.output_log.setText(self.ui.output_log.toPlainText() + str)
 
-        print(f"Output directory: {out_dir}")
-        print(f"Cookies txt file: {cookies}")
-        print(f"Output file name: {out_file}")
+    def stop_ciuling(self):
+        for x in self.to_disable_when_start:
+            x.setEnabled(True)
+
+        self.ui.stop_btn.setEnabled(False)
+
+        for k, l in self.text_lines.items():
+            l.setText("")
+
+    def start_ciuling(self):
+        self.has_started = True
+
+        for x in self.to_disable_when_start:
+            x.setEnabled(False)
+
+        self.ui.stop_btn.setEnabled(True)
+
+        out_dir  = self.text_lines["output_dir"].text().strip()
+        cookies  = self.text_lines["cookies_file"].text().strip()
+        out_file = self.text_lines["output_file"].text().strip()
+
+        self.add_to_log(f"Output directory: {out_dir}\n")
+        self.add_to_log(f"Cookies txt file: {cookies}\n")
+        self.add_to_log(f"Output file name: {out_file}\n")
+
+        ##### THE CIULING HAPPENS HERE #####

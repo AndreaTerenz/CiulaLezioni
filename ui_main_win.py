@@ -86,12 +86,24 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
-        self.start_stop_btn = QPushButton(self.centralwidget)
-        self.start_stop_btn.setObjectName(u"start_stop_btn")
-        self.start_stop_btn.setEnabled(False)
-        self.start_stop_btn.setMinimumSize(QSize(0, 25))
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.start_btn = QPushButton(self.centralwidget)
+        self.start_btn.setObjectName(u"start_btn")
+        self.start_btn.setEnabled(False)
+        self.start_btn.setMaximumSize(QSize(200, 16777215))
 
-        self.verticalLayout.addWidget(self.start_stop_btn)
+        self.horizontalLayout.addWidget(self.start_btn)
+
+        self.stop_btn = QPushButton(self.centralwidget)
+        self.stop_btn.setObjectName(u"stop_btn")
+        self.stop_btn.setEnabled(False)
+        self.stop_btn.setMaximumSize(QSize(200, 16777215))
+
+        self.horizontalLayout.addWidget(self.stop_btn)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.output_log = QTextBrowser(self.centralwidget)
         self.output_log.setObjectName(u"output_log")
@@ -123,7 +135,8 @@ class Ui_MainWindow(object):
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.output_file_name_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file name", None))
-        self.start_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
+        self.start_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
+        self.stop_btn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
