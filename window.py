@@ -44,8 +44,10 @@ class Window(QMainWindow):
 
         self.has_started = False
         
-        x = self.OutputFileNameDialog()
-        x.exec_()
+        x = OutputFileNameDialog()
+        
+        if (x.exec_()):
+            print(x.get_chosen_ext())
 
     def check_start(self):
         all_filled_in = True

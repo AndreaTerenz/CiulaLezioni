@@ -55,7 +55,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox">
+      <widget class="QComboBox" name="extension_combo">
        <item>
         <property name="text">
          <string>mp4</string>
