@@ -1,8 +1,9 @@
 from PySide2.QtWidgets import (QApplication, QMainWindow, QWidget,
-                               QFileDialog, QLineEdit)
+                               QFileDialog, QLineEdit, QMessageBox)
 
 from enum import Enum
 import re
+import os.path
 
 from ui_main_win import Ui_MainWindow
 from dialog import OutputFileNameDialog
@@ -11,6 +12,11 @@ class Window(QMainWindow):
     class FileDialogMode(Enum):
         OUTPUT_DIR  = 1
         COOKIES_TXT = 2
+
+    class ArgsErrorType(Enum):
+        OUT_DIR_NOT_FOUND = 1
+        COOKIES_NOT_FOUND = 2
+        COOKIES_IS_NOT_TXT = 3
 
     def __init__(self):
         super(Window, self).__init__()
@@ -44,10 +50,10 @@ class Window(QMainWindow):
 
         self.has_started = False
         
-        x = OutputFileNameDialog()
+        #x = OutputFileNameDialog()
         
-        if (x.exec_()):
-            print(x.get_chosen_ext())
+        #if (x.exec_()):
+        #    print(x.get_chosen_ext())
 
     def check_start(self):
         all_filled_in = True
@@ -94,22 +100,45 @@ class Window(QMainWindow):
         for k, l in self.text_lines.items():
             l.setText("")
 
+    def show_args_error(self, info:str, type:ArgsErrorType):
+        msg = None
+        
+        if (type == self.ArgsErrorType.OUT_DIR_NOT_FOUND):
+            msg = QMessageBox(QMessageBox.Critical, "Output directory not found",
+                              f"The selected output directory \"{info}\" cannot be found")
+        elif (type == self.ArgsErrorType.COOKIES_NOT_FOUND):
+            msg = QMessageBox(QMessageBox.Critical, "Cookies file not found",
+                              f"The selected text file \"{info}\" cannot be found")
+        elif (type == self.ArgsErrorType.INVALID_OUT_DIR):
+            msg = QMessageBox(QMessageBox.Critical, "Invalid cookies file",
+                              f"The file \"{info}\" is not a valid .txt file")
+
+        if (msg != None):
+            msg.exec_()
+
     def start_ciuling(self):
-         
-         
-        self.has_started = True
-
-        for x in self.to_disable_when_start:
-            x.setEnabled(False)
-
-        self.ui.stop_btn.setEnabled(True)
+        ### CHECK OUTPUT FILE NAME ###
 
         out_dir  = self.text_lines["output_dir"].text().strip()
         cookies  = self.text_lines["cookies_file"].text().strip()
         out_file = self.text_lines["output_file"].text().strip()
 
-        self.add_to_log(f"Output directory: {out_dir}\n")
-        self.add_to_log(f"Cookies txt file: {cookies}\n")
-        self.add_to_log(f"Output file name: {out_file}\n")
+        if not(os.path.isdir(out_dir)):
+            self.show_args_error(out_dir, self.ArgsErrorType.OUT_DIR_NOT_FOUND)
+        elif not(os.path.isfile(cookies)):
+            self.show_args_error(cookies, self.ArgsErrorType.COOKIES_NOT_FOUND)
+        elif not(cookies.lower().endswith(".txt")):
+            self.show_args_error(cookies, self.ArgsErrorType.COOKIES_IS_NOT_TXT)
+        else:
+            self.has_started = True
 
-        ##### THE CIULING HAPPENS HERE #####
+            for x in self.to_disable_when_start:
+                x.setEnabled(False)
+
+            self.ui.stop_btn.setEnabled(True)
+
+            self.add_to_log(f"Output directory: {out_dir}\n")
+            self.add_to_log(f"Cookies txt file: {cookies}\n")
+            self.add_to_log(f"Output file name: {out_file}\n")
+
+            ##### THE CIULING HAPPENS HERE #####
