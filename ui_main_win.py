@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(515, 496)
+        MainWindow.resize(522, 561)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -73,13 +73,24 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_5)
 
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.input_url_line = QLineEdit(self.centralwidget)
+        self.input_url_line.setObjectName(u"input_url_line")
+        self.input_url_line.setMinimumSize(QSize(0, 25))
+
+        self.horizontalLayout_2.addWidget(self.input_url_line)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.horizontalLayout_3.setContentsMargins(0, -1, 0, -1)
         self.output_file_name_line = QLineEdit(self.centralwidget)
         self.output_file_name_line.setObjectName(u"output_file_name_line")
-        self.output_file_name_line.setMinimumSize(QSize(400, 0))
+        self.output_file_name_line.setMinimumSize(QSize(400, 25))
 
         self.horizontalLayout_3.addWidget(self.output_file_name_line)
 
@@ -117,7 +128,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 515, 28))
+        self.menubar.setGeometry(QRect(0, 0, 522, 26))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -134,13 +145,14 @@ class Ui_MainWindow(object):
         self.choose_out_dir_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
+        self.input_url_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Input URL", None))
         self.output_file_name_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file name", None))
         self.start_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.stop_btn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Lato'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Cantarell'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Lato'; font-size:11pt;\"><br /></p></body></html>", None))
     # retranslateUi
 
