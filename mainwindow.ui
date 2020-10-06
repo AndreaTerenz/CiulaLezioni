@@ -61,7 +61,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QLineEdit" name="output_dir_line">
+         <widget class="QLineEdit" name="output_file_line">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -80,7 +80,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="choose_out_dir_btn">
+         <widget class="QPushButton" name="choose_out_file_btn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>

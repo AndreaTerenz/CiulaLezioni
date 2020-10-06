@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(522, 581)
+        MainWindow.resize(522, 527)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -26,32 +26,45 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSpacing(12)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, -1, 0, -1)
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.input_url_line = QLineEdit(self.centralwidget)
+        self.input_url_line.setObjectName(u"input_url_line")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_url_line.sizePolicy().hasHeightForWidth())
+        self.input_url_line.setSizePolicy(sizePolicy)
+        self.input_url_line.setMinimumSize(QSize(0, 40))
+
+        self.horizontalLayout_2.addWidget(self.input_url_line)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.horizontalLayout_4.setContentsMargins(0, -1, 0, -1)
-        self.output_dir_line = QLineEdit(self.centralwidget)
-        self.output_dir_line.setObjectName(u"output_dir_line")
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.output_dir_line.sizePolicy().hasHeightForWidth())
-        self.output_dir_line.setSizePolicy(sizePolicy)
-        self.output_dir_line.setMinimumSize(QSize(400, 40))
+        self.output_file_line = QLineEdit(self.centralwidget)
+        self.output_file_line.setObjectName(u"output_file_line")
+        sizePolicy.setHeightForWidth(self.output_file_line.sizePolicy().hasHeightForWidth())
+        self.output_file_line.setSizePolicy(sizePolicy)
+        self.output_file_line.setMinimumSize(QSize(400, 40))
 
-        self.horizontalLayout_4.addWidget(self.output_dir_line)
+        self.horizontalLayout_4.addWidget(self.output_file_line)
 
-        self.choose_out_dir_btn = QPushButton(self.centralwidget)
-        self.choose_out_dir_btn.setObjectName(u"choose_out_dir_btn")
+        self.choose_out_file_btn = QPushButton(self.centralwidget)
+        self.choose_out_file_btn.setObjectName(u"choose_out_file_btn")
         sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.choose_out_dir_btn.sizePolicy().hasHeightForWidth())
-        self.choose_out_dir_btn.setSizePolicy(sizePolicy1)
-        self.choose_out_dir_btn.setMinimumSize(QSize(100, 40))
-        self.choose_out_dir_btn.setMaximumSize(QSize(104, 16777215))
+        sizePolicy1.setHeightForWidth(self.choose_out_file_btn.sizePolicy().hasHeightForWidth())
+        self.choose_out_file_btn.setSizePolicy(sizePolicy1)
+        self.choose_out_file_btn.setMinimumSize(QSize(100, 40))
+        self.choose_out_file_btn.setMaximumSize(QSize(104, 16777215))
 
-        self.horizontalLayout_4.addWidget(self.choose_out_dir_btn)
+        self.horizontalLayout_4.addWidget(self.choose_out_file_btn)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_4)
@@ -79,34 +92,6 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_5)
-
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.input_url_line = QLineEdit(self.centralwidget)
-        self.input_url_line.setObjectName(u"input_url_line")
-        sizePolicy.setHeightForWidth(self.input_url_line.sizePolicy().hasHeightForWidth())
-        self.input_url_line.setSizePolicy(sizePolicy)
-        self.input_url_line.setMinimumSize(QSize(0, 40))
-
-        self.horizontalLayout_2.addWidget(self.input_url_line)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_2)
-
-        self.horizontalLayout_3 = QHBoxLayout()
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout_3.setContentsMargins(0, -1, 0, -1)
-        self.output_file_name_line = QLineEdit(self.centralwidget)
-        self.output_file_name_line.setObjectName(u"output_file_name_line")
-        sizePolicy.setHeightForWidth(self.output_file_name_line.sizePolicy().hasHeightForWidth())
-        self.output_file_name_line.setSizePolicy(sizePolicy)
-        self.output_file_name_line.setMinimumSize(QSize(400, 40))
-
-        self.horizontalLayout_3.addWidget(self.output_file_name_line)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout_3)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -154,12 +139,11 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"CiulaLezioni", None))
-        self.output_dir_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output folder", None))
-        self.choose_out_dir_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
-        self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
-        self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
         self.input_url_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Input URL", None))
-        self.output_file_name_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file name", None))
+        self.output_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file", None))
+        self.choose_out_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
+        self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
+        self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.start_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.stop_btn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
