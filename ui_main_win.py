@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(522, 561)
+        MainWindow.resize(522, 581)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -32,18 +32,23 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, -1, 0, -1)
         self.output_dir_line = QLineEdit(self.centralwidget)
         self.output_dir_line.setObjectName(u"output_dir_line")
-        self.output_dir_line.setMinimumSize(QSize(400, 0))
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.output_dir_line.sizePolicy().hasHeightForWidth())
+        self.output_dir_line.setSizePolicy(sizePolicy)
+        self.output_dir_line.setMinimumSize(QSize(400, 40))
 
         self.horizontalLayout_4.addWidget(self.output_dir_line)
 
         self.choose_out_dir_btn = QPushButton(self.centralwidget)
         self.choose_out_dir_btn.setObjectName(u"choose_out_dir_btn")
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.choose_out_dir_btn.sizePolicy().hasHeightForWidth())
-        self.choose_out_dir_btn.setSizePolicy(sizePolicy)
-        self.choose_out_dir_btn.setMinimumSize(QSize(100, 25))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.choose_out_dir_btn.sizePolicy().hasHeightForWidth())
+        self.choose_out_dir_btn.setSizePolicy(sizePolicy1)
+        self.choose_out_dir_btn.setMinimumSize(QSize(100, 40))
         self.choose_out_dir_btn.setMaximumSize(QSize(104, 16777215))
 
         self.horizontalLayout_4.addWidget(self.choose_out_dir_btn)
@@ -57,15 +62,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(0, -1, 0, -1)
         self.cookies_file_line = QLineEdit(self.centralwidget)
         self.cookies_file_line.setObjectName(u"cookies_file_line")
-        self.cookies_file_line.setMinimumSize(QSize(400, 0))
+        sizePolicy.setHeightForWidth(self.cookies_file_line.sizePolicy().hasHeightForWidth())
+        self.cookies_file_line.setSizePolicy(sizePolicy)
+        self.cookies_file_line.setMinimumSize(QSize(400, 40))
 
         self.horizontalLayout_5.addWidget(self.cookies_file_line)
 
         self.choose_cookies_btn = QPushButton(self.centralwidget)
         self.choose_cookies_btn.setObjectName(u"choose_cookies_btn")
-        sizePolicy.setHeightForWidth(self.choose_cookies_btn.sizePolicy().hasHeightForWidth())
-        self.choose_cookies_btn.setSizePolicy(sizePolicy)
-        self.choose_cookies_btn.setMinimumSize(QSize(100, 25))
+        sizePolicy1.setHeightForWidth(self.choose_cookies_btn.sizePolicy().hasHeightForWidth())
+        self.choose_cookies_btn.setSizePolicy(sizePolicy1)
+        self.choose_cookies_btn.setMinimumSize(QSize(100, 40))
         self.choose_cookies_btn.setMaximumSize(QSize(104, 16777215))
 
         self.horizontalLayout_5.addWidget(self.choose_cookies_btn)
@@ -77,7 +84,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.input_url_line = QLineEdit(self.centralwidget)
         self.input_url_line.setObjectName(u"input_url_line")
-        self.input_url_line.setMinimumSize(QSize(0, 25))
+        sizePolicy.setHeightForWidth(self.input_url_line.sizePolicy().hasHeightForWidth())
+        self.input_url_line.setSizePolicy(sizePolicy)
+        self.input_url_line.setMinimumSize(QSize(0, 40))
 
         self.horizontalLayout_2.addWidget(self.input_url_line)
 
@@ -90,7 +99,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setContentsMargins(0, -1, 0, -1)
         self.output_file_name_line = QLineEdit(self.centralwidget)
         self.output_file_name_line.setObjectName(u"output_file_name_line")
-        self.output_file_name_line.setMinimumSize(QSize(400, 25))
+        sizePolicy.setHeightForWidth(self.output_file_name_line.sizePolicy().hasHeightForWidth())
+        self.output_file_name_line.setSizePolicy(sizePolicy)
+        self.output_file_name_line.setMinimumSize(QSize(400, 40))
 
         self.horizontalLayout_3.addWidget(self.output_file_name_line)
 
@@ -102,6 +113,7 @@ class Ui_MainWindow(object):
         self.start_btn = QPushButton(self.centralwidget)
         self.start_btn.setObjectName(u"start_btn")
         self.start_btn.setEnabled(False)
+        self.start_btn.setMinimumSize(QSize(0, 40))
         self.start_btn.setMaximumSize(QSize(200, 16777215))
 
         self.horizontalLayout.addWidget(self.start_btn)
@@ -109,6 +121,7 @@ class Ui_MainWindow(object):
         self.stop_btn = QPushButton(self.centralwidget)
         self.stop_btn.setObjectName(u"stop_btn")
         self.stop_btn.setEnabled(False)
+        self.stop_btn.setMinimumSize(QSize(0, 40))
         self.stop_btn.setMaximumSize(QSize(200, 16777215))
 
         self.horizontalLayout.addWidget(self.stop_btn)
