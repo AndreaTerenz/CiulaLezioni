@@ -15,6 +15,10 @@ class Window(QMainWindow):
         OUTPUT_FILE = 1
         COOKIES_TXT = 2
 
+    class UIMode(Enum):
+        RUNNING = 0
+        IDLE = 1
+
     def __init__(self):
         super(Window, self).__init__()
         self.ui = Ui_MainWindow()
@@ -38,13 +42,14 @@ class Window(QMainWindow):
         self.ui.choose_out_file_btn.clicked.connect(self.choose_output_file)
         self.ui.choose_cookies_btn.clicked.connect(self.choose_cookies_file)
 
-        self.ui.output_file_line.textChanged.connect(self.check_start)
-        self.ui.cookies_file_line.textChanged.connect(self.check_start)
+        for k, l in self.text_lines.items():
+            l.textChanged.connect(self.check_start)
 
         self.ui.start_btn.clicked.connect(self.start_ciuling)
         self.ui.stop_btn.clicked.connect(self.stop_ciuling)
 
         self.has_started = False
+        self.check_start()
 
     def check_start(self):
         all_filled_in = True
@@ -87,14 +92,23 @@ class Window(QMainWindow):
 
         self.ui.output_log.repaint()
 
+    def setUI(self, mode:UIMode, resetArgs=False):
+        if (mode == self.UIMode.RUNNING):
+            for x in self.to_disable_when_start:
+                x.setEnabled(False)
+            self.ui.stop_btn.setEnabled(True)
+        if (mode == self.UIMode.IDLE):
+            for x in self.to_disable_when_start:
+                x.setEnabled(True)
+
+            self.ui.stop_btn.setEnabled(False)
+
+            if resetArgs:
+                for k, l in self.text_lines.items():
+                    l.setText("")        
+
     def stop_ciuling(self):
-        for x in self.to_disable_when_start:
-            x.setEnabled(True)
-
-        self.ui.stop_btn.setEnabled(False)
-
-        for k, l in self.text_lines.items():
-            l.setText("")
+        self.setUI(self.UIMode.IDLE, resetArgs=True)
 
     def show_error_box(self, msg,title=""):
         (QMessageBox(QMessageBox.Critical, title, msg)).exec_()
@@ -105,11 +119,12 @@ class Window(QMainWindow):
 
     def run(self, command):
         process = Popen(command, stdout=PIPE, shell=True)
-        while True:
+        done = False
+        while not(done):
             line = process.stdout.readline().rstrip()
-            if not line:
-                break
-            yield line
+            done = (not line)
+            if not done:
+                yield line
 
     def start_ciuling(self):
         ### CHECK OUTPUT FILE NAME ###
@@ -130,10 +145,7 @@ class Window(QMainWindow):
 
             self.has_started = True
 
-            for x in self.to_disable_when_start:
-                x.setEnabled(False)
-
-            self.ui.stop_btn.setEnabled(True)
+            self.setUI(self.UIMode.RUNNING)
 
             self.add_to_log(f"Source URL: {in_url}\n")
             self.add_to_log(f"Cookies txt file: {cookies}\n")
@@ -141,6 +153,8 @@ class Window(QMainWindow):
 
             ##### THE CIULING HAPPENS HERE #####
 
-            for path in self.run(f"youtube-dl --cookies {cookies} -o {out_file} {in_url}"):
-                self.add_to_log(str(path))
-                
+            for path in self.run(f"youtube-dl --no-color --cookies {cookies} -o {out_file} {in_url}"):
+                self.add_to_log(str(path) + "\n")
+
+            self.add_to_log("Done\n")
+            self.setUI(self.UIMode.IDLE)                

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>522</width>
+    <width>614</width>
     <height>527</height>
    </rect>
   </property>
@@ -38,9 +38,12 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>500</width>
             <height>40</height>
            </size>
+          </property>
+          <property name="text">
+           <string>https://www.youtube.com/watch?v=MDCwSBbxxss</string>
           </property>
           <property name="placeholderText">
            <string>Input URL</string>
@@ -73,6 +76,9 @@
             <width>400</width>
             <height>40</height>
            </size>
+          </property>
+          <property name="text">
+           <string>/home/andrea/CiulaLezioni/gigi.mp4</string>
           </property>
           <property name="placeholderText">
            <string>Output file</string>
@@ -130,6 +136,9 @@
             <width>400</width>
             <height>40</height>
            </size>
+          </property>
+          <property name="text">
+           <string>/home/andrea/Downloads/youtube.com_cookies.txt</string>
           </property>
           <property name="placeholderText">
            <string>Cookies file</string>
@@ -215,7 +224,7 @@
        <widget class="QTextBrowser" name="output_log">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>600</width>
           <height>250</height>
          </size>
         </property>
@@ -237,7 +246,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>522</width>
+     <width>614</width>
      <height>26</height>
     </rect>
    </property>

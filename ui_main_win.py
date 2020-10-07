@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(522, 527)
+        MainWindow.resize(614, 527)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.input_url_line.sizePolicy().hasHeightForWidth())
         self.input_url_line.setSizePolicy(sizePolicy)
-        self.input_url_line.setMinimumSize(QSize(0, 40))
+        self.input_url_line.setMinimumSize(QSize(500, 40))
 
         self.horizontalLayout_2.addWidget(self.input_url_line)
 
@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
 
         self.output_log = QTextBrowser(self.centralwidget)
         self.output_log.setObjectName(u"output_log")
-        self.output_log.setMinimumSize(QSize(0, 250))
+        self.output_log.setMinimumSize(QSize(600, 250))
 
         self.verticalLayout.addWidget(self.output_log)
 
@@ -126,7 +126,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 522, 26))
+        self.menubar.setGeometry(QRect(0, 0, 614, 26))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -139,9 +139,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"CiulaLezioni", None))
+        self.input_url_line.setText(QCoreApplication.translate("MainWindow", u"https://www.youtube.com/watch?v=MDCwSBbxxss", None))
         self.input_url_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Input URL", None))
+        self.output_file_line.setText(QCoreApplication.translate("MainWindow", u"/home/andrea/CiulaLezioni/gigi.mp4", None))
         self.output_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file", None))
         self.choose_out_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
+        self.cookies_file_line.setText(QCoreApplication.translate("MainWindow", u"/home/andrea/Downloads/youtube.com_cookies.txt", None))
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.start_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
