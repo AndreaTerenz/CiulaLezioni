@@ -1,10 +1,12 @@
-from PySide2.QtWidgets import (QApplication, QMainWindow, QWidget,
-                               QFileDialog, QLineEdit, QMessageBox)
-
-from enum import Enum
-from urllib.parse import urlparse
 import re
 import os.path
+import subprocess
+import shlex
+from subprocess        import Popen, PIPE
+from enum              import Enum
+from urllib.parse      import urlparse
+from PySide2.QtWidgets import (QApplication, QMainWindow, QWidget,
+                               QFileDialog, QLineEdit, QMessageBox, QScrollBar)
 
 from ui_main_win import Ui_MainWindow
 
@@ -75,7 +77,15 @@ class Window(QMainWindow):
             text_line.setText(dialog.selectedFiles()[0])
 
     def add_to_log(self, str):
+        sb = self.ui.output_log.verticalScrollBar()
+        sb_already_max = (sb.value() == sb.maximum())
+
         self.ui.output_log.setText(self.ui.output_log.toPlainText() + str)
+
+        if (sb_already_max):
+            sb.setValue(sb.maximum())
+
+        self.ui.output_log.repaint()
 
     def stop_ciuling(self):
         for x in self.to_disable_when_start:
@@ -92,6 +102,14 @@ class Window(QMainWindow):
     def check_url(self, url:str):
         res = urlparse(url)
         return (res.scheme != "" and res.netloc != "")
+
+    def run(self, command):
+        process = Popen(command, stdout=PIPE, shell=True)
+        while True:
+            line = process.stdout.readline().rstrip()
+            if not line:
+                break
+            yield line
 
     def start_ciuling(self):
         ### CHECK OUTPUT FILE NAME ###
@@ -122,3 +140,7 @@ class Window(QMainWindow):
             self.add_to_log(f"Output file name: {out_file}\n\n")
 
             ##### THE CIULING HAPPENS HERE #####
+
+            for path in self.run(f"youtube-dl --cookies {cookies} -o {out_file} {in_url}"):
+                self.add_to_log(str(path))
+                

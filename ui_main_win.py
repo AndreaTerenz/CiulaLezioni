@@ -143,7 +143,7 @@ class Ui_MainWindow(object):
         self.output_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file", None))
         self.choose_out_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
-        self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"AAA", None))
+        self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.start_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.stop_btn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
