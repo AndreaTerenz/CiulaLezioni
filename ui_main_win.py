@@ -139,12 +139,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"CiulaLezioni", None))
-        self.input_url_line.setText(QCoreApplication.translate("MainWindow", u"https://www.youtube.com/watch?v=MDCwSBbxxss", None))
+        self.input_url_line.setText("")
         self.input_url_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Input URL", None))
-        self.output_file_line.setText(QCoreApplication.translate("MainWindow", u"/home/andrea/CiulaLezioni/gigi.mp4", None))
+        self.output_file_line.setText("")
         self.output_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Output file", None))
         self.choose_out_file_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
-        self.cookies_file_line.setText(QCoreApplication.translate("MainWindow", u"/home/andrea/Downloads/youtube.com_cookies.txt", None))
+        self.cookies_file_line.setText("")
         self.cookies_file_line.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Cookies file", None))
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.start_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
