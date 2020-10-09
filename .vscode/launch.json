@@ -10,7 +10,8 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "preLaunchTask": "compile_ui"
+            "preLaunchTask": "compile_ui",
+            "postDebugTask": "yeet_pycache"
         }
     ]
 }

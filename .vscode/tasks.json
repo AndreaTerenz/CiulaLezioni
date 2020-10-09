@@ -7,6 +7,11 @@
             "label": "compile_ui",
             "type": "shell",
             "command": "./compile_ui.sh"
+        },
+        {
+            "label": "yeet_pycache",
+            "type": "shell",
+            "command": "rm __pycache__/*"
         }
     ]
 }

@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(614, 527)
+        MainWindow.resize(614, 511)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -25,9 +25,10 @@ class Ui_MainWindow(object):
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setSpacing(12)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setSizeConstraint(QLayout.SetFixedSize)
         self.verticalLayout.setContentsMargins(0, -1, 0, -1)
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.url_layout = QHBoxLayout()
+        self.url_layout.setObjectName(u"url_layout")
         self.input_url_line = QLineEdit(self.centralwidget)
         self.input_url_line.setObjectName(u"input_url_line")
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
@@ -35,24 +36,24 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.input_url_line.sizePolicy().hasHeightForWidth())
         self.input_url_line.setSizePolicy(sizePolicy)
-        self.input_url_line.setMinimumSize(QSize(500, 40))
+        self.input_url_line.setMinimumSize(QSize(500, 35))
 
-        self.horizontalLayout_2.addWidget(self.input_url_line)
+        self.url_layout.addWidget(self.input_url_line)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.verticalLayout.addLayout(self.url_layout)
 
-        self.horizontalLayout_4 = QHBoxLayout()
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout_4.setContentsMargins(0, -1, 0, -1)
+        self.out_file_layout = QHBoxLayout()
+        self.out_file_layout.setObjectName(u"out_file_layout")
+        self.out_file_layout.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.out_file_layout.setContentsMargins(0, -1, 0, -1)
         self.output_file_line = QLineEdit(self.centralwidget)
         self.output_file_line.setObjectName(u"output_file_line")
         sizePolicy.setHeightForWidth(self.output_file_line.sizePolicy().hasHeightForWidth())
         self.output_file_line.setSizePolicy(sizePolicy)
-        self.output_file_line.setMinimumSize(QSize(400, 40))
+        self.output_file_line.setMinimumSize(QSize(400, 35))
 
-        self.horizontalLayout_4.addWidget(self.output_file_line)
+        self.out_file_layout.addWidget(self.output_file_line)
 
         self.choose_out_file_btn = QPushButton(self.centralwidget)
         self.choose_out_file_btn.setObjectName(u"choose_out_file_btn")
@@ -61,62 +62,88 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.choose_out_file_btn.sizePolicy().hasHeightForWidth())
         self.choose_out_file_btn.setSizePolicy(sizePolicy1)
-        self.choose_out_file_btn.setMinimumSize(QSize(100, 40))
+        self.choose_out_file_btn.setMinimumSize(QSize(100, 35))
         self.choose_out_file_btn.setMaximumSize(QSize(104, 16777215))
 
-        self.horizontalLayout_4.addWidget(self.choose_out_file_btn)
+        self.out_file_layout.addWidget(self.choose_out_file_btn)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.verticalLayout.addLayout(self.out_file_layout)
 
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout_5.setContentsMargins(0, -1, 0, -1)
+        self.cookies_layout = QHBoxLayout()
+        self.cookies_layout.setObjectName(u"cookies_layout")
+        self.cookies_layout.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.cookies_layout.setContentsMargins(0, -1, 0, -1)
         self.cookies_file_line = QLineEdit(self.centralwidget)
         self.cookies_file_line.setObjectName(u"cookies_file_line")
         sizePolicy.setHeightForWidth(self.cookies_file_line.sizePolicy().hasHeightForWidth())
         self.cookies_file_line.setSizePolicy(sizePolicy)
-        self.cookies_file_line.setMinimumSize(QSize(400, 40))
+        self.cookies_file_line.setMinimumSize(QSize(400, 35))
 
-        self.horizontalLayout_5.addWidget(self.cookies_file_line)
+        self.cookies_layout.addWidget(self.cookies_file_line)
 
         self.choose_cookies_btn = QPushButton(self.centralwidget)
         self.choose_cookies_btn.setObjectName(u"choose_cookies_btn")
         sizePolicy1.setHeightForWidth(self.choose_cookies_btn.sizePolicy().hasHeightForWidth())
         self.choose_cookies_btn.setSizePolicy(sizePolicy1)
-        self.choose_cookies_btn.setMinimumSize(QSize(100, 40))
+        self.choose_cookies_btn.setMinimumSize(QSize(100, 35))
         self.choose_cookies_btn.setMaximumSize(QSize(104, 16777215))
 
-        self.horizontalLayout_5.addWidget(self.choose_cookies_btn)
+        self.cookies_layout.addWidget(self.choose_cookies_btn)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_5)
+        self.verticalLayout.addLayout(self.cookies_layout)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.ctrls_layout = QHBoxLayout()
+        self.ctrls_layout.setObjectName(u"ctrls_layout")
         self.start_btn = QPushButton(self.centralwidget)
         self.start_btn.setObjectName(u"start_btn")
         self.start_btn.setEnabled(False)
-        self.start_btn.setMinimumSize(QSize(0, 40))
+        sizePolicy1.setHeightForWidth(self.start_btn.sizePolicy().hasHeightForWidth())
+        self.start_btn.setSizePolicy(sizePolicy1)
+        self.start_btn.setMinimumSize(QSize(0, 35))
         self.start_btn.setMaximumSize(QSize(200, 16777215))
 
-        self.horizontalLayout.addWidget(self.start_btn)
+        self.ctrls_layout.addWidget(self.start_btn)
 
         self.stop_btn = QPushButton(self.centralwidget)
         self.stop_btn.setObjectName(u"stop_btn")
         self.stop_btn.setEnabled(False)
-        self.stop_btn.setMinimumSize(QSize(0, 40))
+        sizePolicy1.setHeightForWidth(self.stop_btn.sizePolicy().hasHeightForWidth())
+        self.stop_btn.setSizePolicy(sizePolicy1)
+        self.stop_btn.setMinimumSize(QSize(0, 35))
         self.stop_btn.setMaximumSize(QSize(200, 16777215))
 
-        self.horizontalLayout.addWidget(self.stop_btn)
+        self.ctrls_layout.addWidget(self.stop_btn)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.verticalLayout.addLayout(self.ctrls_layout)
+
+        self.progress_log_ctrl_layout = QHBoxLayout()
+        self.progress_log_ctrl_layout.setObjectName(u"progress_log_ctrl_layout")
+        self.progressBar = QProgressBar(self.centralwidget)
+        self.progressBar.setObjectName(u"progressBar")
+        sizePolicy.setHeightForWidth(self.progressBar.sizePolicy().hasHeightForWidth())
+        self.progressBar.setSizePolicy(sizePolicy)
+        self.progressBar.setMinimumSize(QSize(0, 35))
+        self.progressBar.setValue(24)
+
+        self.progress_log_ctrl_layout.addWidget(self.progressBar)
+
+        self.show_hide_log_btn = QPushButton(self.centralwidget)
+        self.show_hide_log_btn.setObjectName(u"show_hide_log_btn")
+        sizePolicy1.setHeightForWidth(self.show_hide_log_btn.sizePolicy().hasHeightForWidth())
+        self.show_hide_log_btn.setSizePolicy(sizePolicy1)
+        self.show_hide_log_btn.setMinimumSize(QSize(0, 35))
+
+        self.progress_log_ctrl_layout.addWidget(self.show_hide_log_btn)
+
+
+        self.verticalLayout.addLayout(self.progress_log_ctrl_layout)
 
         self.output_log = QTextBrowser(self.centralwidget)
         self.output_log.setObjectName(u"output_log")
-        self.output_log.setMinimumSize(QSize(600, 250))
+        self.output_log.setMinimumSize(QSize(600, 200))
 
         self.verticalLayout.addWidget(self.output_log)
 
@@ -149,6 +176,7 @@ class Ui_MainWindow(object):
         self.choose_cookies_btn.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.start_btn.setText(QCoreApplication.translate("MainWindow", u"Start", None))
         self.stop_btn.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
+        self.show_hide_log_btn.setText(QCoreApplication.translate("MainWindow", u"Hide log", None))
         self.output_log.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

@@ -25,11 +25,9 @@ class Window(QMainWindow):
         self.ui.setupUi(self)
 
         self.to_disable_when_start = [
-            self.ui.choose_cookies_btn,
-            self.ui.choose_out_file_btn,
-            self.ui.input_url_line,
-            self.ui.cookies_file_line,
-            self.ui.output_file_line,
+            self.ui.cookies_layout,
+            self.ui.url_layout,
+            self.ui.out_file_layout,
             self.ui.start_btn
         ]
 
@@ -47,9 +45,21 @@ class Window(QMainWindow):
 
         self.ui.start_btn.clicked.connect(self.start_ciuling)
         self.ui.stop_btn.clicked.connect(self.stop_ciuling)
+        self.ui.show_hide_log_btn.clicked.connect(self.toggle_log)
 
         self.has_started = False
         self.check_start()
+
+        self.toggle_log()
+
+    def toggle_log(self):
+        hidden = not(self.ui.output_log.isHidden())
+        self.ui.output_log.setHidden(hidden)
+
+        self.ui.show_hide_log_btn.setText("Show log" if hidden else "Hide log")
+        
+        self.ui.centralwidget.adjustSize()
+        self.adjustSize()
 
     def check_start(self):
         all_filled_in = True
