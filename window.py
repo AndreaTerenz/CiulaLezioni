@@ -47,16 +47,20 @@ class Window(QMainWindow):
         self.ui.stop_btn.clicked.connect(self.stop_ciuling)
         self.ui.show_hide_log_btn.clicked.connect(self.toggle_log)
 
+        self.is_log_hidden = False
+        self.log_std_height = self.ui.output_log.height()
         self.has_started = False
         self.check_start()
 
-        self.toggle_log()
+        #self.toggle_log()
 
     def toggle_log(self):
-        hidden = not(self.ui.output_log.isHidden())
-        self.ui.output_log.setHidden(hidden)
+        self.is_log_hidden = not self.is_log_hidden
+        #self.ui.output_log.setHidden(hidden)
 
-        self.ui.show_hide_log_btn.setText("Show log" if hidden else "Hide log")
+        self.ui.output_log.setMinimumHeight(0 if self.is_log_hidden else self.log_std_height)
+        self.ui.output_log.setMaximumHeight(0 if self.is_log_hidden else self.log_std_height)
+        self.ui.show_hide_log_btn.setText("Show log" if self.is_log_hidden else "Hide log")
         
         self.ui.centralwidget.adjustSize()
         self.adjustSize()
@@ -164,7 +168,9 @@ class Window(QMainWindow):
             ##### THE CIULING HAPPENS HERE #####
 
             for path in self.run(f"youtube-dl --no-color --cookies {cookies} -o {out_file} {in_url}"):
-                self.add_to_log(str(path) + "\n")
+                p = str(path)
+                s = p[2:len(p)-2].replace(r"\r\x1b[K", "\n")
+                self.add_to_log(s + "\n")
 
             self.add_to_log("Done\n")
             self.setUI(self.UIMode.IDLE)                

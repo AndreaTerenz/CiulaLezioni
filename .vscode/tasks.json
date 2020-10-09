@@ -11,7 +11,7 @@
         {
             "label": "yeet_pycache",
             "type": "shell",
-            "command": "rm __pycache__/*"
+            "command": "rm __pycache__/*; rm *.mkv"
         }
     ]
 }
